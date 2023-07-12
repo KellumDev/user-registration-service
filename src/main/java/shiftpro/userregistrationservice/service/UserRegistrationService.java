@@ -14,7 +14,6 @@ public class UserRegistrationService {
     private static final String USER_PROFILE_ENDPOINT = "http://user-profile-service/api/user-profiles";
     private static final String PASSWORD_SERVICE_ENDPOINT = "http://password-service/api/passwords";
 
-
     private final RestTemplate restTemplate;
 
     @Autowired
@@ -36,7 +35,6 @@ public class UserRegistrationService {
                     userRegistration.getRole(),
                     userRegistration.getUsername()
             );
-           System.out.println("USER PROFILE: " + userProfile);
            return userProfile;
     }
 
@@ -47,7 +45,6 @@ public class UserRegistrationService {
                 userRegistration.getPassword(),
                 userRegistration.getEmail()
         );
-        System.out.println( "USER CREDITIALS: " + userCredential);
         return userCredential;
     }
 
