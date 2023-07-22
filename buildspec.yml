@@ -1,0 +1,34 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto11 # Set the appropriate Java version for your application
+    commands:
+      - echo "Install phase: Install Java and Maven dependencies"
+  pre_build:
+    commands:
+      - mvn clean # Clean the project to ensure a fresh build
+  build:
+    commands:
+      - echo "Install phase: Packaging jar file"
+      - mvn package # Package the Spring Boot application into a JAR file
+  post_build:
+    commands:
+      - mv target/user-registration-service.jar app.jar # Rename the JAR file to "app.jar" (optional)
+      # Add any additional post-build steps here, such as running tests or code analysis
+
+artifacts:
+  files:
+    - app.jar # Specify the name of the JAR file to be uploaded as an artifact
+
+# Optionally, you can specify the S3 bucket and path to store the built JAR file
+# artifacts:
+#   files:
+#     - app.jar
+#   base-directory: target
+#   discard-paths: yes
+#   name: my-springboot-app
+# cache:
+#   paths:
+#     - ~/.m2/repository/**/*
