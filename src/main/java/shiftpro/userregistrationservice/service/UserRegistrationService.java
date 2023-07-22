@@ -11,7 +11,7 @@ import shiftpro.userregistrationservice.model.UserProfile;
 @Service
 public class UserRegistrationService {
 
-    private static final String USER_PROFILE_ENDPOINT = "http://user-profile-service/api/user-profiles";
+    private static final String USER_PROFILE_ENDPOINT = "http://localhost:8040/api/user-profile/create-user-profile";
     private static final String PASSWORD_SERVICE_ENDPOINT = "http://password-service/api/passwords";
 
     private final RestTemplate restTemplate;
@@ -56,7 +56,7 @@ public class UserRegistrationService {
         UserCredential password = createPassword(registrationModel);
 
         restTemplate.postForLocation(USER_PROFILE_ENDPOINT, userProfile);
-        restTemplate.postForLocation(PASSWORD_SERVICE_ENDPOINT, password);
+     //   restTemplate.postForLocation(PASSWORD_SERVICE_ENDPOINT, password);
     }
 
 
